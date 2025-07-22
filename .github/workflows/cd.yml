@@ -38,4 +38,4 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v2'
 
     - name: Build Docker Image and push it to Google Artifact Registry
-      run: gcloud builds submit --tag southamerica-east1-docker.pkg.dev/plasma-line-466616-i9/notely-ar-repo
+      run: gcloud builds submit --tag southamerica-east1-docker.pkg.dev/plasma-line-466616-i9/notely-ar-repo/notely:1.1 .
