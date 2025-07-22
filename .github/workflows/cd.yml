@@ -23,3 +23,19 @@ jobs:
         
       - name: Build the app
         run: npm run build
+      
+  setup-gcloud:
+    name: Config Gcloud
+    runs-on: ubuntu-latest
+
+    steps:
+    - id: auth
+      uses: 'google-github-actions/auth@v2'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+    - name: Set up Cloud SDK
+      uses: 'google-github-actions/setup-gcloud@v2'
+
+    - name: Build Docker Image and push it to Google Artifact Registry
+      run: gcloud builds submit --tag southamerica-east1-docker.pkg.dev/plasma-line-466616-i9/notely-ar-repo
