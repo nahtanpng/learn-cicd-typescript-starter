@@ -34,3 +34,6 @@ jobs:
 
       - name: Build Docker Image and push it to Google Artifact Registry
         run: gcloud builds submit --tag southamerica-east1-docker.pkg.dev/plasma-line-466616-i9/notely-ar-repo/notely:1 .
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image southamerica-east1-docker.pkg.dev/plasma-line-466616-i9/notely-ar-repo/notely:1 --region southamerica-east1 --allow-unauthenticated --project plasma-line-466616-i9 --max-instances=4
